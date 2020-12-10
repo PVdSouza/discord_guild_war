@@ -26,7 +26,12 @@ class Building:
     
     def get_cost(self): 
         return (self.wood_cost*self.level, self.stone_cost*self.level, self.iron_cost*self.level)
+    
+    def get_level(self):
+        return self.level
 
+    def get_resource(self):
+        return self.level*2
 
     def level_up(self):
         self.level += 1
