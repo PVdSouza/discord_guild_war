@@ -23,6 +23,8 @@ Ele utiliza alguns padrões de organização para que seja fácil adicionar, mod
 
 **Esse não é um arquivo de classe**: As funções contidas nesse arquivo são funções de direta modificação em guilds, portanto eles não possuem lógica de controle sobre as mesmas, por exemplo:
 
+**Load**: sempre que uma guilda é carregada, ela sincroniza automaticamente
+
 - A função level_up_building modifica uma building fazendo todo o controle necessário. Ela verifica se essa building pode ser atualizada, se o dono possui recursos suficientes, etc.
 - Uma futura função de ataque de uma guild A vs guild B não estará nesse arquivo, nele só estará uma função receive_damage, ou update_power por exemplo. Uma função para controlar um ataque será implementada em um arquivo específico.
 
@@ -30,6 +32,8 @@ Ele utiliza alguns padrões de organização para que seja fácil adicionar, mod
 
 Arquivo em que o Pedro testa coisas, é só isso mesmo.
 
-## [Sample.py](../sample.py)
+## [Sample.py](sample.py)
 
-Bicho, complicado isso aqui hein
+Arquivo que possui as configurações do bot (acho que poderia ser renomeado para um nome mais descritivo), a lógica mais top-level da aplicação e e responde comandos.
+
+(Seria interessante ter uma tabela/lista aqui com todos os comandos e oque eles fazem de forma resumida, mas deixo essa sugestão pro Pedro)
