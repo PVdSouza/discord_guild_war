@@ -7,7 +7,6 @@ from guildSystem import guild, building
 THIS_FOLDER = os.path.dirname(os.path.abspath(__file__))
 guilds_dict = []
 
-
 with open('config.json') as json_file:
     config = json.load(json_file)
     bot = commands.Bot(command_prefix=config['prefix'])
@@ -54,7 +53,7 @@ async def create_guild(ctx, *name):
     if not os.path.isfile(os.path.join(THIS_FOLDER, 'guildSystem', 'live_guilds', str(ctx.author.id))):
         name = ' '.join(name)
         new_guild = guild.Guild(name, ctx.author.id)
-        new_guild.save()
+        new_guild.save()##MUDA MUDA MUDA
         guilds_dict[name] = str(ctx.author.id)
         await save_json(guilds_dict)        
         await ctx.send('Nova guilda criada: ' + name)
@@ -64,16 +63,16 @@ async def create_guild(ctx, *name):
 @bot.command(name='levelup', pass_context=True, aliases=['lu'])
 async def level_up_building(ctx, building_name):
     if os.path.isfile(os.path.join(THIS_FOLDER, 'guildSystem', 'live_guilds', str(ctx.author.id))):
-        w_guild = guild.Guild.load(str(ctx.author.id))
+        w_guild = guild.Guild.load(str(ctx.author.id))##MUDA MUDA MUDA
         await ctx.send(w_guild.level_up(w_guild.get_building(building_name)))
-        w_guild.save()
+        w_guild.save()##MUDA MUDA MUDA
     else:
         await ctx.send('O usuário não possui guilda nesse servidor.')
 
 @bot.command(name='myguild', pass_context=True, aliases=['mg'])
 async def guild_status(ctx):
     if os.path.isfile(os.path.join(THIS_FOLDER, 'guildSystem', 'live_guilds', str(ctx.author.id))):
-        w_guild = guild.Guild.load(str(ctx.author.id))
+        w_guild = guild.Guild.load(str(ctx.author.id))##MUDA MUDA MUDA
         await ctx.send(w_guild.guild_status())
     else:
         await ctx.send('O usuário não possui guilda nesse servidor.')
@@ -82,7 +81,7 @@ async def guild_status(ctx):
 async def delete_guild(ctx):
     if os.path.isfile(os.path.join(THIS_FOLDER, 'guildSystem', 'live_guilds', str(ctx.author.id))):
         os.remove(os.path.join(THIS_FOLDER, 'guildSystem', 'live_guilds', str(ctx.author.id)))
-        w_guild = guild.Guild.load(str(ctx.author.id))
+        w_guild = guild.Guild.load(str(ctx.author.id))##MUDA MUDA MUDA
         del guilds_dict[w_guild.name]
         await save_json(guilds_dict)
         await ctx.send('Guilda removida com sucesso.')
@@ -97,8 +96,8 @@ async def attack_guild(ctx, *target):
     print(guilds_dict)
     if os.path.isfile(os.path.join(THIS_FOLDER, 'guildSystem', 'live_guilds', str(ctx.author.id))):
         if os.path.isfile(os.path.join(THIS_FOLDER, 'guildSystem', 'live_guilds', guilds_dict[target])):
-            atk_guild = guild.Guild.load(str(ctx.author.id))
-            def_guild = guild.Guild.load(guilds_dict[target])
+            atk_guild = guild.Guild.load(str(ctx.author.id))##MUDA MUDA MUDA
+            def_guild = guild.Guild.load(guilds_dict[target])##MUDA MUDA MUDA
             if (atk_guild.barracks.get_level() > def_guild.wall.get_level()):
                 atk_guild.iron += def_guild.iron/2
                 def_guild.iron -= def_guild.iron/2
@@ -109,8 +108,8 @@ async def attack_guild(ctx, *target):
                 atk_guild.wood += def_guild.wood/2
                 def_guild.wood -= def_guild.wood/2
                 
-                atk_guild.save()
-                def_guild.save()
+                atk_guild.save()##MUDA MUDA MUDA
+                def_guild.save()##MUDA MUDA MUDA
                 await ctx.send('Vitória!')
         else:
             await ctx.send('A guilda alvo não existe.')
